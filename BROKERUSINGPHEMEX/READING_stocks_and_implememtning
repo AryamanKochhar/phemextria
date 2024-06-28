@@ -1,0 +1,16 @@
+import yfinance as yf
+import pandas as pd 
+import numpy as np 
+import xlrd
+def read_html(filepath):
+    data= pd.read_html(filepath)[0]
+    return data
+investor=['rakesh-jhunjhunwala-and-associates','seetha-kumari']
+inst_investor=['president-of-india','tata-sons','sbi-group']
+def main_url(name_investor):
+    link= f'https://www.moneycontrol.com/india-investors-portfolio/{name_investor}/holdings'
+    data=pd.read_html(link)[1]
+    file_name=f'{name_investor}.xlsx'
+    data.to_excel(file_name)
+    
+print(main_url(investor[1]))
